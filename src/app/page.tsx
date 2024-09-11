@@ -7,11 +7,11 @@ import DotPattern from "@/components/magicui/dot-pattern";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-blue-950 relative">
+    <div className="min-h-screen bg-blue-900 relative">
       <DotPattern
         className={cn(
           "absolute inset-0 z-0",
-          "[mask-image:radial-gradient(circle_at_center,white,black)]"
+          "[mask-image:radial-gradient(circle_at_center,yellow)]"
         )}
       />
       <main className="container mx-auto px-4 py-8 relative z-10">
