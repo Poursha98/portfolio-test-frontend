@@ -15,10 +15,18 @@ export default function Home() {
         )}
       />
       <main className="container mx-auto px-4 py-8 relative z-10">
-        <About />
-        <Services />
-        <Portfolio />
-        <ContactUs />
+        <div id="about" className="pt-4">
+          <About />
+        </div>
+        <div id="services" className="pt-4">
+          <Services />
+        </div>
+        <div id="portfolio" className="pt-4">
+          <Portfolio />
+        </div>
+        <div id="contact" className="pt-4">
+          <ContactUs />
+        </div>
       </main>
     </div>
   );

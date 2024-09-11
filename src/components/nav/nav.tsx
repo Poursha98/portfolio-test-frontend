@@ -1,11 +1,13 @@
 "use client";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 
-const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+type SectionId = "about" | "services" | "portfolio" | "contact";
+
+const Navbar: React.FC = () => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
@@ -21,21 +23,43 @@ const Navbar = () => {
     };
   }, [isOpen]);
 
+  const scrollToSection = (sectionId: SectionId) => {
+    setIsOpen(false); // Close the mobile menu
+    setTimeout(() => {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 300);
+  };
+
   return (
-    <header className="bg-primary shadow-md">
+    <header className="bg-primary shadow-md fixed top-0 left-0 right-0 z-50">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <h1 className="text-xl font-bold text-white">Portfolio</h1>
         <nav className="hidden md:flex space-x-4">
-          <Button className="text-white hover:scale-[1.1] transition-all">
+          <Button
+            className="text-white hover:scale-[1.1] transition-all"
+            onClick={() => scrollToSection("about")}
+          >
             About
           </Button>
-          <Button className="text-white hover:scale-[1.1] transition-all">
+          <Button
+            className="text-white hover:scale-[1.1] transition-all"
+            onClick={() => scrollToSection("services")}
+          >
             Services
           </Button>
-          <Button className="text-white hover:scale-[1.1] transition-all">
+          <Button
+            className="text-white hover:scale-[1.1] transition-all"
+            onClick={() => scrollToSection("portfolio")}
+          >
             Portfolio
           </Button>
-          <Button className="text-white hover:scale-[1.1] transition-all">
+          <Button
+            className="text-white hover:scale-[1.1] transition-all"
+            onClick={() => scrollToSection("contact")}
+          >
             Contact
           </Button>
         </nav>
@@ -80,16 +104,28 @@ const Navbar = () => {
             className="md:hidden bg-primary shadow-md overflow-hidden"
           >
             <nav className="flex flex-col items-center py-4 justify-center h-full gap-12">
-              <Button className="w-fit text-white hover:scale-[1.1] transition-all bg-primary !shadow-none">
+              <Button
+                className="w-fit text-white hover:scale-[1.1] transition-all bg-primary !shadow-none"
+                onClick={() => scrollToSection("about")}
+              >
                 About
               </Button>
-              <Button className="w-fit text-white hover:scale-[1.1] transition-all bg-primary !shadow-none">
+              <Button
+                className="w-fit text-white hover:scale-[1.1] transition-all bg-primary !shadow-none"
+                onClick={() => scrollToSection("services")}
+              >
                 Services
               </Button>
-              <Button className="w-fit text-white hover:scale-[1.1] transition-all bg-primary !shadow-none">
+              <Button
+                className="w-fit text-white hover:scale-[1.1] transition-all bg-primary !shadow-none"
+                onClick={() => scrollToSection("portfolio")}
+              >
                 Portfolio
               </Button>
-              <Button className="w-fit text-white hover:scale-[1.1] transition-all bg-primary !shadow-none">
+              <Button
+                className="w-fit text-white hover:scale-[1.1] transition-all bg-primary !shadow-none"
+                onClick={() => scrollToSection("contact")}
+              >
                 Contact
               </Button>
             </nav>
