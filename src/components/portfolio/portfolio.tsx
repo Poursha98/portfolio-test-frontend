@@ -22,80 +22,80 @@ interface Project {
   images: StaticImageData[];
 }
 
-const projects = [
-  {
-    title: "E-commerce Website",
-    description:
-      "A fully functional online store built with Next.js and Django DRF.",
-    images: [ecommerce1],
-  },
-  {
-    title: "Exchange Website",
-    description: "A responsive Exchange website showcasing client work.",
-    images: [exchange1, exchange2],
-  },
-  {
-    title: "Task Management App",
-    description: "A productivity app built with Next.js and Django.",
-    images: [taskApp1, taskApp2],
-  },
-];
-
-const ProjectCard = ({ project }: { project: Project }) => {
-  return (
-    <Card className="flex flex-col w-full overflow-hidden">
-      <div className="relative">
-        <Swiper
-          modules={[Navigation, Autoplay, Virtual]}
-          spaceBetween={30}
-          slidesPerView={1}
-          navigation={{
-            nextEl: ".swiper-button-next-new",
-            prevEl: ".swiper-button-prev-new",
-          }}
-          pagination={{ clickable: true }}
-          autoplay={{ delay: 5000 }}
-          loop={true}
-          virtual
-          className="h-48"
-        >
-          {project.images.map((image, index) => (
-            <SwiperSlide key={index} virtualIndex={index}>
-              <Image
-                src={image}
-                alt={`${project.title} - Image ${index + 1}`}
-                fill
-                style={{ objectFit: "cover" }}
-              />
-            </SwiperSlide>
-          ))}
-          <Button
-            variant="outline"
-            size="icon"
-            className="swiper-button-prev-new !w-8 !h-8 !bg-black !bg-opacity-65 rounded-full absolute left-2 top-1/2 -translate-y-1/2 z-10 hover:!bg-opacity-80"
-          >
-            <ChevronLeft className="h-4 w-4 text-white" />
-          </Button>
-          <Button
-            variant="outline"
-            size="icon"
-            className="swiper-button-next-new !w-8 !h-8 !bg-black !bg-opacity-65 rounded-full absolute right-2 top-1/2 -translate-y-1/2 z-10 hover:!bg-opacity-80"
-          >
-            <ChevronRight className="h-4 w-4 text-white" />
-          </Button>
-        </Swiper>
-      </div>
-      <CardHeader>
-        <CardTitle>{project.title}</CardTitle>
-      </CardHeader>
-      <CardContent className="flex-grow">
-        <p>{project.description}</p>
-      </CardContent>
-    </Card>
-  );
-};
-
 const Portfolio = () => {
+  const projects: Project[] = [
+    {
+      title: "E-commerce Website",
+      description:
+        "A fully functional online store built with Next.js and Django DRF.",
+      images: [ecommerce1],
+    },
+    {
+      title: "Exchange Website",
+      description: "A responsive Exchange website showcasing client work.",
+      images: [exchange1, exchange2],
+    },
+    {
+      title: "Task Management App",
+      description: "A productivity app built with Next.js and Django.",
+      images: [taskApp1, taskApp2],
+    },
+  ];
+
+  const ProjectCard = ({ project }: { project: Project }) => {
+    return (
+      <Card className="flex flex-col w-full overflow-hidden">
+        <div className="relative">
+          <Swiper
+            modules={[Navigation, Autoplay, Virtual]}
+            spaceBetween={30}
+            slidesPerView={1}
+            navigation={{
+              nextEl: ".swiper-button-next-new",
+              prevEl: ".swiper-button-prev-new",
+            }}
+            pagination={{ clickable: true }}
+            autoplay={{ delay: 5000 }}
+            loop={true}
+            virtual
+            className="h-48"
+          >
+            {project.images.map((image, index) => (
+              <SwiperSlide key={index} virtualIndex={index}>
+                <Image
+                  src={image}
+                  alt={`${project.title} - Image ${index + 1}`}
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              </SwiperSlide>
+            ))}
+            <Button
+              variant="outline"
+              size="icon"
+              className="swiper-button-prev-new !w-8 !h-8 !bg-black !bg-opacity-65 rounded-full absolute left-2 top-1/2 -translate-y-1/2 z-10 hover:!bg-opacity-80"
+            >
+              <ChevronLeft className="h-4 w-4 text-white" />
+            </Button>
+            <Button
+              variant="outline"
+              size="icon"
+              className="swiper-button-next-new !w-8 !h-8 !bg-black !bg-opacity-65 rounded-full absolute right-2 top-1/2 -translate-y-1/2 z-10 hover:!bg-opacity-80"
+            >
+              <ChevronRight className="h-4 w-4 text-white" />
+            </Button>
+          </Swiper>
+        </div>
+        <CardHeader>
+          <CardTitle>{project.title}</CardTitle>
+        </CardHeader>
+        <CardContent className="flex-grow">
+          <p>{project.description}</p>
+        </CardContent>
+      </Card>
+    );
+  };
+
   return (
     <section className="my-16">
       <h2 className="text-3xl font-bold mb-8 text-center text-white">
