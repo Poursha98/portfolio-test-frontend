@@ -9,13 +9,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import { Navigation, Autoplay, Virtual } from "swiper/modules";
 import ecommerce1 from "@/images/ecommerce-1.png";
-import ecommerce2 from "@/images/ecommerce-2.png";
 import exchange1 from "@/images/exchange-1.jpg";
 import exchange2 from "@/images/exchange-2.png";
 import taskApp1 from "@/images/task-app-1.png";
 import taskApp2 from "@/images/task-app.jpg";
+
 interface Project {
   title: string;
   description: string;
@@ -27,7 +27,7 @@ const projects = [
     title: "E-commerce Website",
     description:
       "A fully functional online store built with Next.js and Django DRF.",
-    images: [ecommerce1, ecommerce2],
+    images: [ecommerce1],
   },
   {
     title: "Exchange Website",
@@ -46,7 +46,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
     <Card className="flex flex-col w-full overflow-hidden">
       <div className="relative">
         <Swiper
-          modules={[Navigation, Pagination, Autoplay]}
+          modules={[Navigation, Autoplay, Virtual]}
           spaceBetween={30}
           slidesPerView={1}
           navigation={{
@@ -56,10 +56,11 @@ const ProjectCard = ({ project }: { project: Project }) => {
           pagination={{ clickable: true }}
           autoplay={{ delay: 5000 }}
           loop={true}
+          virtual
           className="h-48"
         >
           {project.images.map((image, index) => (
-            <SwiperSlide key={index}>
+            <SwiperSlide key={index} virtualIndex={index}>
               <Image
                 src={image}
                 alt={`${project.title} - Image ${index + 1}`}
