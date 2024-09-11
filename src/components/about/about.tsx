@@ -3,7 +3,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 const About = () => {
   return (
     <section className="my-16">
-      <h2 className="text-3xl font-bold mb-8 text-center">About Me</h2>
+      <h2 className="text-3xl text-white font-bold mb-8 text-center">
+        About Me
+      </h2>
       <Card>
         <CardHeader>
           <CardTitle>Poursha Karimi</CardTitle>
