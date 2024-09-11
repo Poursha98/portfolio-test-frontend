@@ -14,11 +14,35 @@ const geistMono = localFont({
   variable: "--font-geist-mono",
   weight: "100 900",
 });
-
-export const metadata: Metadata = {
-  title: "portfolio website",
+const metaVars = {
+  title: "portfolio",
+  description: "portfolio website",
+  path: "/portfolio",
 };
-
+export const metadata: Metadata = {
+  title: metaVars.title,
+  description: metaVars.description,
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: false,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+};
+export const viewport = {
+  themeColor: "##171717",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: "no",
+};
 export default function RootLayout({
   children,
 }: Readonly<{
