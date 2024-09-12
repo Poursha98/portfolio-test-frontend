@@ -12,4 +12,4 @@ npm i
 npm run dev
 ```
 
-#### the project's base path is on: /blog, so you should go to http://localhost:3000/portfolio exp.
+#### the project's base path is on: /portfolio, so you should go to http://localhost:3000/portfolio exp.
